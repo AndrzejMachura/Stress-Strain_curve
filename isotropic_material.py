@@ -21,7 +21,7 @@ class mat:
         return _output 
 
     def generate_stress_list(self):
-        return [n for n in range(0, int(self.Ftu*1.1), 1)]
+        return [n for n in range(0, int(self.Ftu*1.05), 1)]
     
     def generate_hooke_strain(self):
         return [i/self.E for i in self.generate_stress_list()]
