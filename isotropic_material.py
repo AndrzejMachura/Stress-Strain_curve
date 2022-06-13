@@ -15,7 +15,7 @@ class mat:
         # In original form natural logarithm was used. 
         # Common logarithm do not 
         self.H= self.Fty/(0.002**self.n)
-
+   
     def __str__(self):
         _output = f'Material {self.mat_name} mechanical properties:\n   Young Modulus: {self.E}MPa\n   Ultimate strength: {self.Ftu}MPa\n   Yield strength: {self.Fty}MPa\n   Maximum elongation: {self.elongation}%'
         return _output 
@@ -29,6 +29,11 @@ class mat:
     def generate_r_o_strain (self):
         return [s/self.E + (s/self.H)**(1/self.n) for s in self.generate_stress_list()]
 
+    def generate_true_strain (self):
+        return [math.log(1.+(s/self.E + (s/self.H)**(1/self.n))) for s in self.generate_stress_list()]
+    
+    def generate_true_strain (self):
+        return [s*(1+(s/self.E + (s/self.H)**(1/self.n))) for s in self.generate_stress_list()]
 
 if __name__ == "__main__":
 
