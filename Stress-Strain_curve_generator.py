@@ -26,13 +26,14 @@ def generate_chart(r_o_strain,stress,tr_strain, tr_stress):
 def generate_text_file(X):
     file = open(X.mat_name+".txt","w")
     file.write(str(X)+"\n")
-    file.write("Row Number\tLinear Strain\tTrue Strain\tStress \n")
+    file.write("Row Number\tEngineering Strain\tEngineering Stress\tTrue Strain\tTrue Stress \n")
     i=0
     while i < len(material.generate_stress_list()):
-        x_l = "{:.3e}".format(material.generate_hooke_strain()[i])
-        x_ep = "{:.3e}".format(material.generate_r_o_strain()[i])
-        y = "{:.3e}".format(material.generate_stress_list()[i])
-        file.write(str(i+1)+"\t"+str(x_l)+"\t"+str(x_ep)+"\t"+str(y)+"\n")
+        e_strain = "{:.3e}".format(material.generate_r_o_strain()[i])
+        e_stress = "{:.3e}".format(material.generate_stress_list()[i])
+        tr_strain = "{:.3e}".format(material.generate_true_strain()[i])
+        tr_stress = "{:.3e}".format(material.generate_true_stress()[i])
+        file.write(str(i+1)+"\t"+str(e_strain)+"\t"+str(e_stress)+"\t"+str(tr_strain)+"\t"+str(tr_stress)+"\n")
         i+=1
     
     file.close()
