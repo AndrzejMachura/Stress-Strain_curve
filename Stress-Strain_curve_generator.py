@@ -7,20 +7,20 @@
 import pylab
 import isotropic_material
 
-def generate_chart(r_o_strain,stress,tr_strain, tr_stress):
+def generate_chart(Y):
 
-    ultimate_elongation = [0., 1.1*max(r_o_strain)]
-    ultimate_stress = [Ftu, Ftu]
+    ultimate_elongation = [0., 1.1*max(Y.generate_r_o_strain())]
+    ultimate_stress = [Y.Ftu, Y.Ftu]
 
     pylab.title("Stress-Strain")
-    pylab.plot(r_o_strain,stress,'y', tr_strain,tr_stress,'b',ultimate_elongation,ultimate_stress,'r')
+    pylab.plot(Y.generate_r_o_strain(),Y.generate_stress_list(),'y', Y.generate_true_strain(),Y.generate_true_stress(),'b',ultimate_elongation,ultimate_stress,'r')
     pylab.legend(['Engineering Stress-Strain','True Stress-Strain','Ultimate Stregnth'], loc='lower right', shadow=True, fontsize='medium', title='Legend')
-    pylab.ylim(0., 1.1*max(tr_stress))
+    pylab.ylim(0., 1.1*max(Y.generate_true_stress()))
     pylab.ylabel("Stress [MPa]")
-    pylab.xlim(0., 1.1*max(r_o_strain))
+    pylab.xlim(0., 1.1*max(Y.generate_r_o_strain()))
     pylab.xlabel("Strain [-]") 
     pylab.grid(True)  
-    pylab.savefig(str(mat_name)+".jpg", dpi = 720) 
+    pylab.savefig(str(Y.mat_name)+".jpg", dpi = 720) 
     pylab.show()
 
 def generate_text_file(X):
@@ -49,6 +49,6 @@ Fty = float (input("Give Yield Tensile Strength (MPa): "))
 u = float (input("Give maximum elongation (%): "))
 
 #create matrial object, generate stress-strain chart, create otput file
-material = isotropic_material.mat(mat_name, Ftu, Fty, u, E)
-generate_chart(material.generate_r_o_strain(), material.generate_stress_list(), material.generate_true_strain(),material.generate_true_stress())
+material = isotropic_material.Mat(mat_name, Ftu, Fty, u, E)
+generate_chart(material)
 generate_text_file(material)

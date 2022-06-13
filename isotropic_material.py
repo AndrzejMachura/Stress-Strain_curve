@@ -4,7 +4,7 @@
 
 import math
 
-class mat:
+class Mat:
     def __init__(self, mat_name, Ftu, Fty, elongation, E):
         self.mat_name= mat_name
         self.Ftu = Ftu
