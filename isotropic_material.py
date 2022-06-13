@@ -37,7 +37,7 @@ class Mat:
 
 if __name__ == "__main__":
 
-    test_material= mat("2024-T3",440.,340.,6.,70000.)
+    test_material= Mat("2024-T3",440.,340.,6.,70000.)
     print(test_material)
     material_name=str(test_material.mat_name)
     print("\n\n   "+material_name)
