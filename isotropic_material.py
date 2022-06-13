@@ -32,7 +32,7 @@ class mat:
     def generate_true_strain (self):
         return [math.log(1.+(s/self.E + (s/self.H)**(1/self.n))) for s in self.generate_stress_list()]
     
-    def generate_true_strain (self):
+    def generate_true_stress (self):
         return [s*(1+(s/self.E + (s/self.H)**(1/self.n))) for s in self.generate_stress_list()]
 
 if __name__ == "__main__":
