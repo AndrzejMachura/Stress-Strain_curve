@@ -1,6 +1,6 @@
 """This script is responsible for generating non-linear Stress-Strain curve usig Ramberg-Osgood relation  
-   and linear curve acording to Hooke's law.
-   The output of this script are:
+   for engineering curve and true stess-strain curve based on the instantaneous cross-section.
+   Script is generating:
    1. Text file containig elasto-plastic and linear defintinion of given material
    2. Chart with drawn Stress-Strain curve of given material.
 """
@@ -50,7 +50,7 @@ def generate_text_file(X=isotropic_material.Mat("2024-T72", 470, 300, 11, 71000)
     
     file.close()
 
-print("This script is responsible for generating non-linear Stress-Strain curve usig Ramberg-Osgood relation and linear curve acording to Hooke's law.")
+print("This script is responsible for generating non-linear Stress-Strain curve usig Ramberg-Osgood relation and true stess-strain curve based on the instantaneous cross-section.")
 print("Required units are given in brackets \n")
 
 while True:
